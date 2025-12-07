@@ -1,0 +1,30 @@
+{
+  "id": "isaac-locomotion-training",
+  "title": "AI-Robot Brain Training for Locomotion",
+  "description": "Story Goal",
+  "source": "@site/docs/isaac-locomotion-training.md",
+  "sourceDirName": ".",
+  "slug": "/isaac-locomotion-training",
+  "permalink": "/docs/isaac-locomotion-training",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/your-github-username-or-org/physical-ai-humanoid-robotics-book/tree/main/docs/isaac-locomotion-training.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "isaac-locomotion-training",
+    "title": "AI-Robot Brain Training for Locomotion",
+    "sidebar_label": "Isaac Locomotion Training",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Humanoid Navigation",
+    "permalink": "/docs/humanoid-navigation"
+  },
+  "next": {
+    "title": "VLA Capstone",
+    "permalink": "/docs/capstone-vla-manipulation"
+  }
+}

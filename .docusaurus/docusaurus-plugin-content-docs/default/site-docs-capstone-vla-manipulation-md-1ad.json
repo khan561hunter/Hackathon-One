@@ -1,0 +1,30 @@
+{
+  "id": "capstone-vla-manipulation",
+  "title": "Capstone - Voice-Controlled Object Manipulation",
+  "description": "Story Goal",
+  "source": "@site/docs/capstone-vla-manipulation.md",
+  "sourceDirName": ".",
+  "slug": "/capstone-vla-manipulation",
+  "permalink": "/docs/capstone-vla-manipulation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/your-github-username-or-org/physical-ai-humanoid-robotics-book/tree/main/docs/capstone-vla-manipulation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "id": "capstone-vla-manipulation",
+    "title": "Capstone - Voice-Controlled Object Manipulation",
+    "sidebar_label": "VLA Capstone",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Isaac Locomotion Training",
+    "permalink": "/docs/isaac-locomotion-training"
+  },
+  "next": {
+    "title": "Hardware Setup",
+    "permalink": "/docs/hardware-setup"
+  }
+}

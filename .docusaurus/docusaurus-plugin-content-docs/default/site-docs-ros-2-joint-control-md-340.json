@@ -1,0 +1,30 @@
+{
+  "id": "ros2-joint-control",
+  "title": "ROS 2 Basic Joint Control",
+  "description": "Story Goal",
+  "source": "@site/docs/ros2-joint-control.md",
+  "sourceDirName": ".",
+  "slug": "/ros2-joint-control",
+  "permalink": "/docs/ros2-joint-control",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/your-github-username-or-org/physical-ai-humanoid-robotics-book/tree/main/docs/ros2-joint-control.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "ros2-joint-control",
+    "title": "ROS 2 Basic Joint Control",
+    "sidebar_label": "ROS 2 Joint Control",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Fundamentals",
+    "permalink": "/docs/ros2-intro"
+  },
+  "next": {
+    "title": "Digital Twin Simulation",
+    "permalink": "/docs/digital-twin-intro"
+  }
+}

@@ -1,0 +1,40 @@
+# Gitignore for Physical AI & Humanoid Robotics Book Project
+
+# Node.js / Docusaurus
+node_modules/
+dist/
+build/
+
+.cache/
+*.log
+.env*
+coverage/
+
+# Python / ROS 2
+__pycache__/
+*.pyc
+.venv/
+venv/
+install/
+log/
+build/
+devel/
+*.egg-info/
+*.so
+*.a
+*.o
+*.out
+
+# Common OS and Editor files
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+
+# Docker
+.dockerignore
+
+# Misc
+*.pdf

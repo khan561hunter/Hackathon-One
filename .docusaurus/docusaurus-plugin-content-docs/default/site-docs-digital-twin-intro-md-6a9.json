@@ -1,0 +1,30 @@
+{
+  "id": "digital-twin-intro",
+  "title": "Introduction to Digital Twins",
+  "description": "What is a Digital Twin?",
+  "source": "@site/docs/digital-twin-intro.md",
+  "sourceDirName": ".",
+  "slug": "/digital-twin-intro",
+  "permalink": "/docs/digital-twin-intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/your-github-username-or-org/physical-ai-humanoid-robotics-book/tree/main/docs/digital-twin-intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "id": "digital-twin-intro",
+    "title": "Introduction to Digital Twins",
+    "sidebar_label": "Digital Twin Simulation",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Joint Control",
+    "permalink": "/docs/ros2-joint-control"
+  },
+  "next": {
+    "title": "Humanoid Navigation",
+    "permalink": "/docs/humanoid-navigation"
+  }
+}

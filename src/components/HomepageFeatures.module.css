@@ -1,0 +1,131 @@
+/* Homepage Features Section */
+.features {
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--ifm-background-color) 0%,
+    var(--ifm-background-surface-color) 100%
+  );
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  background: var(--ifm-background-color);
+  border-radius: var(--ifm-global-radius);
+  padding: 2rem;
+  box-shadow: var(--ifm-global-shadow-md);
+  transition: all var(--ifm-transition-normal);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-primary),
+    var(--ifm-color-accent)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ifm-transition-normal);
+}
+
+.feature:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--ifm-global-shadow-tl);
+  border-color: var(--ifm-color-primary);
+}
+
+.feature:hover::before {
+  transform: scaleX(1);
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary),
+    var(--ifm-color-accent)
+  );
+  margin-bottom: 1.5rem;
+  box-shadow: var(--ifm-global-shadow-md);
+  transition: all var(--ifm-transition-normal);
+}
+
+.feature:hover .featureIcon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--ifm-global-shadow-tl);
+}
+
+.icon {
+  font-size: 2.5rem;
+  filter: grayscale(100%) brightness(200%);
+}
+
+.featureContent h3 {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  margin-bottom: 1rem;
+  transition: color var(--ifm-transition-fast);
+}
+
+.feature:hover .featureContent h3 {
+  color: var(--ifm-color-primary);
+}
+
+.featureContent p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-secondary);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .features {
+    padding: 3rem 1rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature {
+    padding: 1.5rem;
+  }
+
+  .featureIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .featureContent h3 {
+    font-size: 1.25rem;
+  }
+}

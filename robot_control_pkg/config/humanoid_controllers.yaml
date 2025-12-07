@@ -1,0 +1,52 @@
+# ROS 2 Controller Configuration for Humanoid Robot
+#
+# This file configures the controllers for the humanoid robot's joints.
+# It uses ros2_control framework to manage joint position controllers.
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    # List of controllers to load
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_group_controller:
+      type: forward_command_controller/ForwardCommandController
+
+
+# Joint State Broadcaster
+# Publishes the current state of all joints to /joint_states topic
+joint_state_broadcaster:
+  ros__parameters:
+    joints:
+      - left_shoulder_joint
+      - left_shoulder_pitch_joint
+      - left_elbow_joint
+      - right_shoulder_joint
+      - right_shoulder_pitch_joint
+      - right_elbow_joint
+
+
+# Joint Group Position Controller
+# Accepts position commands for all joints via /joint_group_controller/commands topic
+joint_group_controller:
+  ros__parameters:
+    joints:
+      - left_shoulder_joint
+      - left_shoulder_pitch_joint
+      - left_elbow_joint
+      - right_shoulder_joint
+      - right_shoulder_pitch_joint
+      - right_elbow_joint
+
+    interface_name: position
+
+    # Command topic
+    # The joint_commander_node publishes to this topic
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity

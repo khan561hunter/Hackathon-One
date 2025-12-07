@@ -1,0 +1,68 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "capstone-vla-manipulation",
+              "path": "/docs/capstone-vla-manipulation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "digital-twin-intro",
+              "path": "/docs/digital-twin-intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "hardware-setup",
+              "path": "/docs/hardware-setup",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "humanoid-navigation",
+              "path": "/docs/humanoid-navigation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "isaac-locomotion-training",
+              "path": "/docs/isaac-locomotion-training",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2-intro",
+              "path": "/docs/ros2-intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2-joint-control",
+              "path": "/docs/ros2-joint-control",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "Introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

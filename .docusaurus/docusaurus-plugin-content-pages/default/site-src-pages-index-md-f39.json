@@ -1,0 +1,13 @@
+{
+  "type": "mdx",
+  "permalink": "/physical-ai-humanoid-robotics-book/",
+  "source": "@site/src/pages/index.md",
+  "title": "Physical AI & Humanoid Robotics",
+  "description": "Embodied Intelligence in the Real World",
+  "frontMatter": {
+    "title": "Physical AI & Humanoid Robotics",
+    "description": "Embodied Intelligence in the Real World",
+    "hide_table_of_contents": true
+  },
+  "unlisted": false
+}

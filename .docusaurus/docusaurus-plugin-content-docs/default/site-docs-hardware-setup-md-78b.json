@@ -1,0 +1,26 @@
+{
+  "id": "hardware-setup",
+  "title": "Hardware Setup & Lab Configurations",
+  "description": "Overview",
+  "source": "@site/docs/hardware-setup.md",
+  "sourceDirName": ".",
+  "slug": "/hardware-setup",
+  "permalink": "/docs/hardware-setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/your-github-username-or-org/physical-ai-humanoid-robotics-book/tree/main/docs/hardware-setup.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "id": "hardware-setup",
+    "title": "Hardware Setup & Lab Configurations",
+    "sidebar_label": "Hardware Setup",
+    "sidebar_position": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VLA Capstone",
+    "permalink": "/docs/capstone-vla-manipulation"
+  }
+}

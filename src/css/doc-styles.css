@@ -1,0 +1,367 @@
+/**
+ * Enhanced Documentation Styles
+ * Additional styling for documentation pages
+ */
+
+/* ============================================
+   DOCUMENTATION CONTENT ENHANCEMENTS
+   ============================================ */
+
+/* Documentation wrapper */
+.theme-doc-markdown {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Enhanced blockquotes */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background: var(--ifm-background-surface-color);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: var(--ifm-global-shadow-lw);
+}
+
+.markdown blockquote p {
+  margin: 0;
+  font-style: italic;
+  color: var(--ifm-font-color-secondary);
+}
+
+/* Lists */
+.markdown ul,
+.markdown ol {
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.markdown li {
+  margin: 0.75rem 0;
+  line-height: 1.7;
+}
+
+.markdown li::marker {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Images */
+.markdown img {
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+  transition: all var(--ifm-transition-normal);
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+}
+
+.markdown img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--ifm-global-shadow-tl);
+}
+
+/* Horizontal Rule */
+.markdown hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ifm-color-emphasis-200),
+    transparent
+  );
+  margin: 3rem 0;
+}
+
+/* ============================================
+   TABLE OF CONTENTS
+   ============================================ */
+
+.table-of-contents {
+  font-size: 0.9rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-font-color-secondary);
+  transition: all var(--ifm-transition-fast);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  display: block;
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-menu-color-background-hover);
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  background-color: var(--ifm-menu-color-background-active);
+  border-left: 2px solid var(--ifm-color-primary);
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+.pagination-nav__link {
+  border: 2px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  transition: all var(--ifm-transition-normal);
+  padding: 1.5rem;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.pagination-nav__sublabel {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.pagination-nav__label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ifm-heading-color);
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.breadcrumbs__link {
+  transition: color var(--ifm-transition-fast);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+/* ============================================
+   SIDEBAR ENHANCEMENTS
+   ============================================ */
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.menu__list {
+  margin: 0.5rem 0;
+}
+
+.menu__caret {
+  transition: transform var(--ifm-transition-fast);
+}
+
+.menu__list-item--collapsed .menu__caret {
+  transform: rotate(-90deg);
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+
+.navbar__search-input {
+  border-radius: 8px;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  transition: all var(--ifm-transition-fast);
+  padding: 0.5rem 1rem;
+}
+
+.navbar__search-input:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* ============================================
+   TABS
+   ============================================ */
+
+.tabs {
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+  margin-bottom: 2rem;
+}
+
+.tabs__item {
+  border-radius: 8px 8px 0 0;
+  transition: all var(--ifm-transition-fast);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+}
+
+.tabs__item:hover {
+  background-color: var(--ifm-menu-color-background-hover);
+}
+
+.tabs__item--active {
+  background-color: var(--ifm-menu-color-background-active);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  border-bottom: 3px solid var(--ifm-color-primary);
+}
+
+/* ============================================
+   BADGES & LABELS
+   ============================================ */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge--primary {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+.badge--secondary {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+.badge--success {
+  background: var(--ifm-color-success);
+  color: white;
+}
+
+.badge--warning {
+  background: var(--ifm-color-warning);
+  color: white;
+}
+
+.badge--danger {
+  background: var(--ifm-color-danger);
+  color: white;
+}
+
+/* ============================================
+   CODE COPY BUTTON
+   ============================================ */
+
+.theme-code-block-highlighted-line {
+  background-color: var(--docusaurus-highlighted-code-line-bg);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+.clean-btn {
+  transition: all var(--ifm-transition-fast);
+}
+
+.clean-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+
+.navbar-sidebar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--ifm-navbar-background-color);
+}
+
+.navbar-sidebar__brand {
+  padding: 1rem;
+}
+
+.navbar-sidebar__items {
+  padding: 1rem;
+}
+
+/* ============================================
+   DOC ITEM CONTAINER
+   ============================================ */
+
+.docItemContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
+  padding: 2rem 0;
+}
+
+article header h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.theme-doc-markdown header + * {
+  margin-top: 2rem;
+}
+
+/* ============================================
+   VERSION BADGE
+   ============================================ */
+
+.theme-doc-version-badge {
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   EDIT PAGE LINK
+   ============================================ */
+
+.theme-edit-this-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  transition: all var(--ifm-transition-fast);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  margin: 2rem 0;
+}
+
+.theme-edit-this-page:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateX(4px);
+  background-color: var(--ifm-menu-color-background-hover);
+}
+
+/* ============================================
+   LAST UPDATE
+   ============================================ */
+
+.theme-last-updated {
+  font-size: 0.9rem;
+  color: var(--ifm-font-color-secondary);
+  font-style: italic;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 996px) {
+  .theme-doc-markdown {
+    max-width: 100%;
+  }
+
+  article header h1 {
+    font-size: 2.25rem;
+  }
+}
