@@ -8,6 +8,8 @@ build/
 .cache/
 *.log
 .env*
+backend/.env
+backend/.env.local
 coverage/
 
 # Python / ROS 2
@@ -38,3 +40,4 @@ Thumbs.db
 
 # Misc
 *.pdf
+nul
