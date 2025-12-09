@@ -16,7 +16,7 @@ import styles from './styles.module.css';
 // In production: configure via docusaurus.config.js customFields
 const BACKEND_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
   ? 'http://localhost:8000'
-  : 'https://your-backend-url.onrender.com'; // Replace with your actual Render backend URL
+  : 'https://38aaaf1fe32c.ngrok-free.app'; // ngrok tunnel URL (temporary)
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
