@@ -16,7 +16,7 @@ import styles from './styles.module.css';
 // In production: configure via docusaurus.config.js customFields
 const BACKEND_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
   ? 'http://localhost:8000'
-  : 'http://localhost:8000'; // Change this to your production backend URL when deploying
+  : 'https://your-backend-url.onrender.com'; // Replace with your actual Render backend URL
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
