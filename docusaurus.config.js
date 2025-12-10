@@ -29,7 +29,8 @@ const config = {
   customFields: {
     // Backend URL for RAG chatbot (production)
     // In development, localhost:8000 will be used automatically
-    backendUrl: process.env.BACKEND_URL || 'http://localhost:8000',
+    // TODO: Replace with your Render backend URL after deployment
+    backendUrl: process.env.BACKEND_URL || 'https://hackathon-rag-backend.onrender.com',
   },
 
   presets: [
