@@ -9,16 +9,20 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
-// Use window.location.origin to determine backend URL
-// In development: http://localhost:8000
-// In production: configure via docusaurus.config.js customFields or environment variable
-const BACKEND_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-  ? 'http://localhost:8000'
-  : process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-
 export default function Chatbot() {
+  const {siteConfig} = useDocusaurusContext();
+
+  // Use window.location.origin to determine backend URL
+  // In development: http://localhost:8000
+  // In production: use customFields.backendUrl from docusaurus.config.js
+  const BACKEND_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : (siteConfig.customFields && siteConfig.customFields.backendUrl)
+      ? siteConfig.customFields.backendUrl
+      : 'http://localhost:8000';
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
