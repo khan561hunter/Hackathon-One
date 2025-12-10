@@ -1,0 +1,44 @@
+# Docker ignore file for Railway backend deployment
+# Excludes unnecessary files from Docker build
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files (Railway provides these)
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+*.md
+!README.md
+
+# Railway/Nix files (we're using Dockerfile now)
+nixpacks.toml
+railway.json
+
+# Git
+.git/
+.gitignore
