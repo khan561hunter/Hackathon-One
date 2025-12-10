@@ -180,6 +180,16 @@ Maintenance session removing ngrok infrastructure and fixing critical chatbot fu
 - **Verification:** Backend query test passed - "What is Physical AI?" returned 65% relevance
 - **Configuration:** Frontend → localhost:3000, Backend → localhost:8000
 
+**015. Add Railway.app deployment guide** 🚂
+- **Task:** Provide free permanent backend deployment solution
+- **Impact:** Enable chatbot to work on anyone's computer (not just localhost)
+- **Files created:**
+  - RAILWAY_DEPLOYMENT.md (comprehensive guide with alternatives)
+  - backend/railway.json (Railway configuration)
+- **Recommended platform:** Railway.app ($5/month free credits, always-on, no cold starts)
+- **Alternatives documented:** Fly.io, Vercel Serverless, PythonAnywhere
+- **Benefits:** No credit card required, auto-deploy from GitHub, permanent solution
+
 ---
 
 ## Project Stats
@@ -343,10 +353,11 @@ history/prompts/general/
 ├── 012-configure-mobile-deployment.general.prompt.md (5.4 KB) 📱
 ├── 013-fix-cors-production-error.general.prompt.md (7.8 KB) ⚠️
 ├── 014-revert-to-localhost-backend.general.prompt.md (3.2 KB)
-└── README.md (this file - 13 KB)
+├── 015-add-railway-deployment-guide.general.prompt.md (6.1 KB) 🚂
+└── README.md (this file - 14 KB)
 ```
 
-**Total:** 14 PHR files + 1 README (~88 KB documentation)
+**Total:** 15 PHR files + 1 README (~94 KB documentation)
 
 ---
 
@@ -390,6 +401,6 @@ For questions or issues:
 ---
 
 *Last updated: 2025-12-10*
-*Total PHRs: 14*
-*Total lines documented: ~3,100*
-*Documentation size: ~88 KB*
+*Total PHRs: 15*
+*Total lines documented: ~3,400*
+*Documentation size: ~94 KB*
