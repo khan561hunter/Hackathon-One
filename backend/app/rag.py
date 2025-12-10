@@ -12,6 +12,7 @@ from .embeddings_cohere import get_cohere_embeddings
 from .llm_simple import get_simple_generator  # Using simple fallback for generation
 from .qdrant_setup import get_qdrant_manager
 from .postgres import get_postgres_manager
+from .guardrails import get_guardrails
 
 logger = logging.getLogger(__name__)
 
@@ -44,8 +45,9 @@ class RAGPipeline:
         self.generator = get_simple_generator()  # Using simple fallback
         self.vector_db = get_qdrant_manager()
         self.postgres = get_postgres_manager()
+        self.guardrails = get_guardrails(min_relevance_score=0.25)  # 25% minimum relevance
 
-        logger.info("Initialized RAG pipeline with Cohere embeddings and simple text generation")
+        logger.info("Initialized RAG pipeline with Cohere embeddings, simple text generation, and guardrails")
 
     async def answer_question(
         self,
@@ -63,6 +65,32 @@ class RAGPipeline:
             Dict with answer, sources, and metadata
         """
         try:
+            # Step 0: Validate question against book topics (keyword-based)
+            logger.info(f"Validating question: {question[:50]}...")
+            initial_validation = self.guardrails.is_book_related(question)
+
+            if not initial_validation["is_valid"]:
+                # Question blocked by keywords (obvious off-topic)
+                answer = initial_validation["message"]
+                logger.warning(f"Question blocked: {initial_validation['reason']}")
+
+                if log_to_db:
+                    await self.postgres.log_chat_interaction(
+                        question=question,
+                        answer=answer,
+                        retrieved_docs=[],
+                        model_used="guardrails_blocked",
+                        response_time=None
+                    )
+
+                return {
+                    "answer": answer,
+                    "sources": [],
+                    "chunks_found": 0,
+                    "blocked": True,
+                    "reason": initial_validation["reason"]
+                }
+
             # Step 1: Embed question using Cohere (NOT Claude!)
             logger.info(f"Embedding question: {question[:50]}...")
             query_embedding = self.embeddings.embed_query(question)
@@ -74,6 +102,35 @@ class RAGPipeline:
                 top_k=self.top_k,
                 score_threshold=self.score_threshold
             )
+
+            # Step 2.5: Validate retrieval results (relevance-based)
+            retrieval_validation = self.guardrails.validate_retrieval_results(
+                question=question,
+                retrieved_chunks=retrieved_chunks,
+                validation_result=initial_validation
+            )
+
+            if not retrieval_validation["is_valid"]:
+                # Question failed relevance check
+                answer = retrieval_validation["message"]
+                logger.warning(f"Question failed relevance check")
+
+                if log_to_db:
+                    await self.postgres.log_chat_interaction(
+                        question=question,
+                        answer=answer,
+                        retrieved_docs=[],
+                        model_used="guardrails_low_relevance",
+                        response_time=None
+                    )
+
+                return {
+                    "answer": answer,
+                    "sources": [],
+                    "chunks_found": len(retrieved_chunks),
+                    "blocked": True,
+                    "reason": "low_relevance"
+                }
 
             if not retrieved_chunks:
                 answer = "I couldn't find relevant information in the documentation to answer your question. Please try rephrasing or ask about a different topic."
