@@ -28,13 +28,16 @@
 
 ### Step 3: Configure Project
 
+**IMPORTANT:** Railway must build ONLY the Python backend, not the root npm project.
+
 **Root Directory:**
 - Set root directory to `backend`
 - Railway Settings → General → Root Directory: `backend`
 
-**Build Command:**
-- Railway auto-detects: `pip install -r requirements.txt`
-- If not, set manually in Settings
+**Build Configuration (Auto-detected):**
+- Railway will detect `nixpacks.toml` and `railway.json` in the backend folder
+- These files ensure Python-only build (no Node.js)
+- Build command: `pip install -r requirements.txt`
 
 **Start Command:**
 ```bash
@@ -45,6 +48,10 @@ uvicorn main:app --host 0.0.0.0 --port $PORT
 ```
 /health
 ```
+
+**Files Added for Railway:**
+- `backend/nixpacks.toml` - Tells Railway to use Python 3.10 only
+- `backend/railway.json` - Railway-specific configuration
 
 ### Step 4: Add Environment Variables
 
@@ -299,6 +306,28 @@ railway up
 ---
 
 ## Troubleshooting
+
+### Issue: "Minimum Node.js version not met" (Node.js v18 detected)
+**Error Message:**
+```
+[ERROR] Minimum Node.js version not met :(
+[INFO] You are using Node.js v18.20.8, Requirement: Node.js >=20.0.
+ERROR: failed to build: failed to solve: process "npm run build" did not complete successfully: exit code: 1
+```
+
+**Root Cause:** Railway is detecting the root package.json instead of just building the Python backend
+
+**Solution:**
+1. ✅ Ensure **Root Directory** is set to `backend` in Railway Settings → General
+2. ✅ Verify `backend/nixpacks.toml` exists (tells Railway to use Python only)
+3. ✅ Verify `backend/railway.json` exists (Railway configuration)
+4. ✅ In Railway dashboard → Settings → Environment, confirm no Node.js buildpack is selected
+5. ✅ Redeploy after confirming root directory setting
+
+**Files that fix this issue:**
+- `backend/nixpacks.toml` - Forces Python 3.10 build
+- `backend/railway.json` - Railway-specific config
+- Root directory setting: `backend`
 
 ### Issue: "Failed to build"
 **Solution:** Check Railway logs, ensure `requirements.txt` is correct
