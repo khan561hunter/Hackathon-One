@@ -1,0 +1,30 @@
+# Railway should ONLY deploy the backend folder
+# Ignore everything outside backend/
+
+# Root-level frontend files
+../node_modules/
+../package.json
+../package-lock.json
+../.docusaurus/
+../build/
+../static/
+../src/
+../docs/
+
+# Development files
+../.git/
+../.env
+../README.md
+../SETUP.md
+../QUICKSTART.md
+../PRODUCTION.md
+../RAILWAY_DEPLOYMENT.md
+../GET_RAILWAY_URL.md
+../RAILWAY_FIX_502.md
+
+# Only keep backend files
+!*.py
+!requirements.txt
+!.env
+!railway.json
+!nixpacks.toml
