@@ -161,6 +161,23 @@ Maintenance session removing ngrok infrastructure and fixing critical chatbot fu
   - Environment variables documented
   - Free tier deployment ready
 
+**013. Fix CORS error blocking production requests** ⚠️ **PRODUCTION FIX**
+- **Task:** Fix CORS configuration preventing frontend from accessing backend
+- **Impact:** CRITICAL - Resolved CORS preflight failure blocking all chatbot requests
+- **Files modified:**
+  - backend/main.py (added origin whitespace stripping, expose_headers)
+  - backend/render.yaml (ensured proper CORS_ORIGINS format)
+- **Error fixed:**
+  ```
+  Access to fetch at 'https://hackathon-rag-backend.onrender.com/ask'
+  from origin 'https://hackathon-one-seven.vercel.app' has been
+  blocked by CORS policy
+  ```
+- **Solution:**
+  - Strip whitespace from CORS origins
+  - Add `expose_headers=["*"]` to CORS middleware
+  - Verify Vercel URL in CORS_ORIGINS
+
 ---
 
 ## Project Stats
@@ -322,10 +339,11 @@ history/prompts/general/
 ├── 010-test-book-queries.general.prompt.md (3.8 KB)
 ├── 011-start-frontend-server.general.prompt.md (2.6 KB)
 ├── 012-configure-mobile-deployment.general.prompt.md (5.4 KB) 📱
-└── README.md (this file - 12 KB)
+├── 013-fix-cors-production-error.general.prompt.md (7.8 KB) ⚠️
+└── README.md (this file - 13 KB)
 ```
 
-**Total:** 12 PHR files + 1 README (~77 KB documentation)
+**Total:** 13 PHR files + 1 README (~85 KB documentation)
 
 ---
 
@@ -369,6 +387,6 @@ For questions or issues:
 ---
 
 *Last updated: 2025-12-10*
-*Total PHRs: 12*
-*Total lines documented: ~2,800*
-*Documentation size: ~77 KB*
+*Total PHRs: 13*
+*Total lines documented: ~3,000*
+*Documentation size: ~85 KB*

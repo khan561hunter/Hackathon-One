@@ -19,7 +19,7 @@ services:
       - key: NEON_DB_URL
         sync: false
       - key: CORS_ORIGINS
-        value: https://hackathon-one-seven.vercel.app,http://localhost:3000
+        value: https://hackathon-one-seven.vercel.app,http://localhost:3000,http://localhost:3001
       - key: HOST
         value: 0.0.0.0
       - key: PORT
