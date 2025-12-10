@@ -51,6 +51,12 @@ class ChatbotGuardrails:
         "coordinate frame", "transformation", "rotation",
         "urdf", "mesh", "collision", "visual",
         "workspace", "singularity", "jacobian",
+
+        #general ai simple questions
+        "artificial intelligence", "ai", "machine learning", "deep learning",
+        "neural network", "model training", "dataset", "computer vision", "natural language processing",
+        "reinforcement learning", "supervised learning", "unsupervised learning", "robot perception", "robot control",
+        "robot navigation", "robot localization","book"
     ]
 
     # Disallowed patterns (obvious off-topic questions)
@@ -61,6 +67,13 @@ class ChatbotGuardrails:
         r"\b(stock|invest|trading|crypto|bitcoin)\b",
         r"\b(health|medical|doctor|disease)\b",
         r"\b(travel|vacation|hotel|flight)\b",
+        r"\b(hobby|fun|entertainment|leisure)\b",
+        r"\b(personal|relationship|friend|family)\b",
+        r"\b(joke|funny|humor|meme)\b",
+        r"\b(art|design|painting|drawing|photography)\b",
+        r"\b(sport|exercise|fitness|gym|workout)\b",    
+        r"\b(science|technology|invention|you)\b",
+
     ]
 
     def __init__(self, min_relevance_score: float = 0.25):
