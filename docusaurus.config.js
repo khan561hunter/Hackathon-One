@@ -28,8 +28,9 @@ const config = {
   // Custom fields for chatbot backend URL
   customFields: {
     // Backend URL for RAG chatbot
-    // Default: localhost:8000 for development
-    backendUrl: process.env.BACKEND_URL || 'http://localhost:8000',
+    // Production: Railway deployment
+    // Development: localhost:8000
+    backendUrl: process.env.BACKEND_URL || 'https://miraculous-dream-production-ae30.up.railway.app',
   },
 
   presets: [
