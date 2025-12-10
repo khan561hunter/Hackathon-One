@@ -167,16 +167,18 @@ Maintenance session removing ngrok infrastructure and fixing critical chatbot fu
 - **Files modified:**
   - backend/main.py (added origin whitespace stripping, expose_headers)
   - backend/render.yaml (ensured proper CORS_ORIGINS format)
-- **Error fixed:**
-  ```
-  Access to fetch at 'https://hackathon-rag-backend.onrender.com/ask'
-  from origin 'https://hackathon-one-seven.vercel.app' has been
-  blocked by CORS policy
-  ```
 - **Solution:**
   - Strip whitespace from CORS origins
   - Add `expose_headers=["*"]` to CORS middleware
   - Verify Vercel URL in CORS_ORIGINS
+
+**014. Revert to localhost backend for development**
+- **Task:** Remove mobile deployment configuration, use localhost
+- **Impact:** Simplified setup for local development
+- **Files modified:** docusaurus.config.js (backend URL set to localhost:8000)
+- **What was kept:** CORS fixes from PHR 013 (still needed for proper browser security)
+- **Verification:** Backend query test passed - "What is Physical AI?" returned 65% relevance
+- **Configuration:** Frontend → localhost:3000, Backend → localhost:8000
 
 ---
 
@@ -340,10 +342,11 @@ history/prompts/general/
 ├── 011-start-frontend-server.general.prompt.md (2.6 KB)
 ├── 012-configure-mobile-deployment.general.prompt.md (5.4 KB) 📱
 ├── 013-fix-cors-production-error.general.prompt.md (7.8 KB) ⚠️
+├── 014-revert-to-localhost-backend.general.prompt.md (3.2 KB)
 └── README.md (this file - 13 KB)
 ```
 
-**Total:** 13 PHR files + 1 README (~85 KB documentation)
+**Total:** 14 PHR files + 1 README (~88 KB documentation)
 
 ---
 
@@ -387,6 +390,6 @@ For questions or issues:
 ---
 
 *Last updated: 2025-12-10*
-*Total PHRs: 13*
-*Total lines documented: ~3,000*
-*Documentation size: ~85 KB*
+*Total PHRs: 14*
+*Total lines documented: ~3,100*
+*Documentation size: ~88 KB*
