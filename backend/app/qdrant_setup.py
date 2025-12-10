@@ -21,7 +21,7 @@ class QdrantManager:
         self,
         url: Optional[str] = None,
         api_key: Optional[str] = None,
-        collection_name: str = "documentation_chunks"
+        collection_name: Optional[str] = None
     ):
         """
         Initialize Qdrant manager
@@ -29,11 +29,11 @@ class QdrantManager:
         Args:
             url: Qdrant Cloud URL (defaults to QDRANT_URL env var)
             api_key: Qdrant API key (defaults to QDRANT_API_KEY env var)
-            collection_name: Name of the collection to use
+            collection_name: Name of the collection to use (defaults to QDRANT_COLLECTION env var)
         """
         self.url = url or os.getenv("QDRANT_URL")
         self.api_key = api_key or os.getenv("QDRANT_API_KEY")
-        self.collection_name = collection_name
+        self.collection_name = collection_name or os.getenv("QDRANT_COLLECTION", "documentation_chunks")
 
         if not self.url or not self.api_key:
             raise ValueError("QDRANT_URL and QDRANT_API_KEY must be set")
@@ -133,19 +133,26 @@ class QdrantManager:
             List of matching chunks with metadata and scores
         """
         try:
-            results = self.client.search(
+            results = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding,
+                query=query_embedding,
                 limit=top_k,
                 score_threshold=score_threshold
-            )
+            ).points
 
             # Format results
             formatted_results = []
             for result in results:
+                # Extract metadata fields from payload
+                metadata = {
+                    "doc_name": result.payload.get("doc_name", "Unknown"),
+                    "chunk_index": result.payload.get("chunk_index", 0),
+                    "total_chunks": result.payload.get("total_chunks", 0),
+                    "file_path": result.payload.get("file_path", "")
+                }
                 formatted_results.append({
-                    "text": result.payload["text"],
-                    "metadata": result.payload["metadata"],
+                    "text": result.payload.get("text", ""),
+                    "metadata": metadata,
                     "score": result.score
                 })
 

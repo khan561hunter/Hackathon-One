@@ -13,10 +13,10 @@ import styles from './styles.module.css';
 
 // Use window.location.origin to determine backend URL
 // In development: http://localhost:8000
-// In production: configure via docusaurus.config.js customFields
+// In production: configure via docusaurus.config.js customFields or environment variable
 const BACKEND_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
   ? 'http://localhost:8000'
-  : 'https://38aaaf1fe32c.ngrok-free.app'; // ngrok tunnel URL (temporary)
+  : process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
