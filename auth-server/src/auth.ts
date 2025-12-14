@@ -51,22 +51,22 @@ export const auth = betterAuth({
   },
 
   // Trusted origins for CORS
-  trustedOrigins: (process.env.CORS_ORIGINS || "http://localhost:3000").split(
-    ","
-  ),
+  trustedOrigins: (process.env.CORS_ORIGINS || "http://localhost:3000")
+    .split(",")
+    .map((origin) => origin.trim()),
 
   // Advanced cookie configuration for cross-origin
   advanced: {
     // Cookie settings for cross-origin requests
     defaultCookieAttributes: {
-      // Use 'lax' for development (same-site localhost), 'none' for production cross-domain
-      sameSite:
-        process.env.NODE_ENV === "production" ? ("none" as const) : ("lax" as const),
-      secure: process.env.NODE_ENV === "production",
-      // httpOnly is true by default (secure)
+      // Use 'none' for cross-domain cookies to work
+      sameSite: "none" as const,
+      secure: true,
+      httpOnly: true,
+      path: "/",
     },
     // Use secure cookies in production
-    useSecureCookies: process.env.NODE_ENV === "production",
+    useSecureCookies: true,
   },
 
   // Session configuration
