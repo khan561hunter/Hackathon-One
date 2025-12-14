@@ -1,18 +1,25 @@
 import { createAuthClient } from "better-auth/react";
 
+// Auth server URLs
+const AUTH_SERVER_URLS = {
+  development: "http://localhost:3001",
+  // This will be updated after deploying auth-server to Railway
+  production: "https://auth-server-production.up.railway.app", // PLACEHOLDER - will update
+};
+
 // Determine auth server URL based on environment
 const getAuthBaseURL = () => {
   if (typeof window === "undefined") {
-    return "http://localhost:3001"; // SSR fallback
+    return AUTH_SERVER_URLS.development; // SSR fallback
   }
 
-  // Development
+  // Development (localhost)
   if (window.location.hostname === "localhost") {
-    return "http://localhost:3001";
+    return AUTH_SERVER_URLS.development;
   }
 
-  // Production - adjust to your auth server URL
-  return process.env.AUTH_SERVER_URL || "http://localhost:3001";
+  // Production
+  return AUTH_SERVER_URLS.production;
 };
 
 export const authClient = createAuthClient({
