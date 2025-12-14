@@ -22,11 +22,16 @@ export default function UserMenu({ user }) {
   const handleSignOut = async () => {
     setIsLoading(true);
     try {
-      await signOut();
+      await signOut({
+        fetchOptions: {
+          credentials: "include",
+        },
+      });
       window.location.reload();
     } catch (err) {
       console.error("Sign out failed:", err);
-      setIsLoading(false);
+      // Still reload to clear local state even if server call fails
+      window.location.reload();
     }
   };
 
