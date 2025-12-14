@@ -3,8 +3,7 @@ import { createAuthClient } from "better-auth/react";
 // Auth server URLs
 const AUTH_SERVER_URLS = {
   development: "http://localhost:3001",
-  // This will be updated after deploying auth-server to Railway
-  production: "https://auth-server-production.up.railway.app", // PLACEHOLDER - will update
+  production: "https://serene-mercy-production-5114.up.railway.app",
 };
 
 // Determine auth server URL based on environment
