@@ -7,15 +7,27 @@ import "dotenv/config";
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Parse CORS origins from environment
-const corsOrigins = (process.env.CORS_ORIGINS || "http://localhost:3000").split(
-  ","
-);
+// Parse CORS origins from environment (trim whitespace from each origin)
+const corsOrigins = (process.env.CORS_ORIGINS || "http://localhost:3000")
+  .split(",")
+  .map((origin) => origin.trim());
+
+console.log("CORS Origins configured:", corsOrigins);
 
 // CORS configuration - MUST be before routes
 app.use(
   cors({
-    origin: corsOrigins,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+
+      if (corsOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("CORS blocked origin:", origin);
+        callback(null, false);
+      }
+    },
     credentials: true, // CRITICAL: Allow cookies
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
