@@ -1,0 +1,70 @@
+import React, { useState, useEffect, useRef } from "react";
+import { signOut } from "../../lib/auth-client";
+import styles from "./styles.module.css";
+
+export default function UserMenu({ user }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const menuRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSignOut = async () => {
+    setIsLoading(true);
+    try {
+      await signOut();
+      window.location.reload();
+    } catch (err) {
+      console.error("Sign out failed:", err);
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className={styles.userMenuContainer} ref={menuRef}>
+      <button
+        className={styles.userButton}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+      >
+        {user.image ? (
+          <img src={user.image} alt={user.name || "User"} />
+        ) : (
+          <div className={styles.userInitial}>
+            {(user.name || user.email)[0].toUpperCase()}
+          </div>
+        )}
+        <span className={styles.userName}>
+          {user.name || user.email.split("@")[0]}
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className={styles.dropdown}>
+          <div className={styles.dropdownHeader}>
+            <p className={styles.dropdownEmail}>{user.email}</p>
+          </div>
+          <div className={styles.dropdownDivider} />
+          <button
+            onClick={handleSignOut}
+            disabled={isLoading}
+            className={styles.dropdownItem}
+          >
+            {isLoading ? "Signing out..." : "Sign Out"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
