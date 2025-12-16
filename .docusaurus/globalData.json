@@ -12,7 +12,8 @@
           "docs": [
             {
               "id": "advanced-topics",
-              "path": "/docs/advanced-topics"
+              "path": "/docs/advanced-topics",
+              "sidebar": "tutorialSidebar"
             },
             {
               "id": "capstone-vla-manipulation",

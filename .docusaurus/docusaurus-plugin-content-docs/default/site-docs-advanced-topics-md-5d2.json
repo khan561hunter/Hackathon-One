@@ -17,5 +17,10 @@
     "title": "Advanced Topics in Physical AI",
     "sidebar_label": "Advanced Topics",
     "sidebar_position": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Hardware Setup",
+    "permalink": "/docs/hardware-setup"
   }
 }

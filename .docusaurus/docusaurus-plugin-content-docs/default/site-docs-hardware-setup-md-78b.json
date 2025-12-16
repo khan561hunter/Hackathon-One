@@ -22,5 +22,9 @@
   "previous": {
     "title": "VLA Capstone",
     "permalink": "/docs/capstone-vla-manipulation"
+  },
+  "next": {
+    "title": "Advanced Topics",
+    "permalink": "/docs/advanced-topics"
   }
 }
