@@ -39,16 +39,21 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'c28'),
+    component: ComponentCreator('/docs', 'bb4'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '015'),
+        component: ComponentCreator('/docs', '10f'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', 'ccd'),
+            component: ComponentCreator('/docs', '671'),
             routes: [
+              {
+                path: '/docs/advanced-topics',
+                component: ComponentCreator('/docs/advanced-topics', '398'),
+                exact: true
+              },
               {
                 path: '/docs/capstone-vla-manipulation',
                 component: ComponentCreator('/docs/capstone-vla-manipulation', '660'),

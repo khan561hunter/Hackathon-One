@@ -1,11 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { signOut } from "../../lib/auth-client";
+import { useAuth } from "@site/src/contexts/AuthContext";
 import styles from "./styles.module.css";
 
-export default function UserMenu({ user }) {
+const LEVEL_ICONS = {
+  beginner: "🌱",
+  intermediate: "⚡",
+  advanced: "🚀",
+};
+
+const LEVEL_LABELS = {
+  beginner: "Beginner",
+  intermediate: "Intermediate",
+  advanced: "Advanced",
+};
+
+export default function UserMenu({ user, onEditProfile }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const menuRef = useRef(null);
+  const { userProfile } = useAuth();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -57,10 +71,29 @@ export default function UserMenu({ user }) {
 
       {isOpen && (
         <div className={styles.dropdown}>
-          <div className={styles.dropdownHeader}>
+          <div className={styles.profileSection}>
             <p className={styles.dropdownEmail}>{user.email}</p>
+            {userProfile?.difficultyLevel && (
+              <div className={styles.profileLevel}>
+                <span className={styles.profileLevelIcon}>
+                  {LEVEL_ICONS[userProfile.difficultyLevel]}
+                </span>
+                <span className={styles.profileLevelText}>
+                  {LEVEL_LABELS[userProfile.difficultyLevel]}
+                </span>
+              </div>
+            )}
           </div>
           <div className={styles.dropdownDivider} />
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              onEditProfile?.();
+            }}
+            className={styles.dropdownItem}
+          >
+            Edit Profile
+          </button>
           <button
             onClick={handleSignOut}
             disabled={isLoading}

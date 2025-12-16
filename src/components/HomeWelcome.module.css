@@ -1,0 +1,343 @@
+.welcomeContainer {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 16px;
+  margin: 32px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.welcomeHeader {
+  margin-bottom: 32px;
+}
+
+.welcomeTitle {
+  margin: 0 0 8px;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+}
+
+.welcomeSubtitle {
+  margin: 0;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Level Section */
+.levelSection {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+}
+
+.levelIcon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.levelLabel {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.levelDescription {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Recommendations */
+.recommendations {
+  margin-top: 20px;
+}
+
+.recommendationsTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 16px;
+}
+
+.recommendationCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.recommendationCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.recommendationCard:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(4px);
+  color: white;
+}
+
+.cardIcon {
+  font-size: 24px;
+}
+
+.cardTitle {
+  flex: 1;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.cardArrow {
+  font-size: 20px;
+}
+
+/* Continue Section */
+.continueSection {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.continueTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 16px;
+}
+
+.continueCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.continueCard:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(4px);
+  color: white;
+}
+
+.continueCardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.continueCardTime {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.continueArrow {
+  font-size: 24px;
+  margin-left: 16px;
+}
+
+/* Setup Prompt */
+.setupPrompt {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.setupPrompt p {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.setupHint {
+  font-size: 14px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 400 !important;
+}
+
+/* Responsive Design - All Devices */
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+  .welcomeContainer {
+    padding: 20px 16px;
+    margin: 16px 0;
+    border-radius: 12px;
+  }
+
+  .welcomeTitle {
+    font-size: 24px;
+  }
+
+  .welcomeSubtitle {
+    font-size: 14px;
+  }
+
+  .levelBadge {
+    flex-direction: column;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .levelIcon {
+    font-size: 36px;
+  }
+
+  .levelLabel {
+    font-size: 18px;
+  }
+
+  .levelDescription {
+    font-size: 13px;
+  }
+
+  .recommendationsTitle,
+  .continueTitle {
+    font-size: 16px;
+  }
+
+  .recommendationCards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .recommendationCard,
+  .continueCard {
+    padding: 14px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+  }
+
+  .continueCardTitle {
+    font-size: 15px;
+  }
+
+  .continueCardTime {
+    font-size: 12px;
+  }
+
+  .setupPrompt {
+    padding: 20px 16px;
+  }
+
+  .setupPrompt p {
+    font-size: 15px;
+  }
+
+  .setupHint {
+    font-size: 13px !important;
+  }
+}
+
+/* Tablets Portrait (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .welcomeContainer {
+    padding: 28px 24px;
+    margin: 20px 0;
+  }
+
+  .welcomeTitle {
+    font-size: 30px;
+  }
+
+  .welcomeSubtitle {
+    font-size: 16px;
+  }
+
+  .levelBadge {
+    flex-direction: row;
+    padding: 14px;
+  }
+
+  .recommendationCards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* iPad / Tablets Landscape (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .welcomeContainer {
+    padding: 32px 28px;
+  }
+
+  .welcomeTitle {
+    font-size: 32px;
+  }
+
+  .recommendationCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptops (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .welcomeContainer {
+    padding: 36px 32px;
+  }
+
+  .recommendationCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large Desktops (1441px+) */
+@media (min-width: 1441px) {
+  .welcomeContainer {
+    padding: 40px;
+  }
+
+  .welcomeTitle {
+    font-size: 38px;
+  }
+
+  .recommendationCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .recommendationCard,
+  .continueCard {
+    padding: 16px;
+    min-height: 60px;
+  }
+
+  .cardTitle,
+  .continueCardTitle {
+    font-size: 16px;
+  }
+}

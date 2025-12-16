@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomeWelcome from '@site/src/components/HomeWelcome';
 
 import styles from './index.module.css';
 
@@ -50,6 +51,9 @@ export default function Home() {
       description="Embodied Intelligence in the Real World - Learn Physical AI and Humanoid Robotics">
       <HomepageHeader />
       <main>
+        <div className="container">
+          <HomeWelcome />
+        </div>
         <HomepageFeatures />
         <section className={styles.learningPath}>
           <div className="container">

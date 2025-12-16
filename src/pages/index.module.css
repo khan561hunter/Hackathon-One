@@ -311,7 +311,222 @@
   transform: translateY(-3px);
 }
 
-/* Responsive Design */
+/* Responsive Design - All Devices */
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+  .heroBanner {
+    padding: 3rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .robotIcon {
+    font-size: 6rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .learningPath {
+    padding: 2.5rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .pathGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pathItem {
+    padding: 1.5rem 1rem;
+    min-height: 160px;
+  }
+
+  .pathItem h3 {
+    font-size: 1rem;
+  }
+
+  .pathItem p {
+    font-size: 0.9rem;
+  }
+
+  .pathArrow {
+    transform: rotate(90deg);
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .pathNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .ctaSection {
+    padding: 2.5rem 1rem;
+  }
+
+  .ctaCard {
+    padding: 2rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .ctaCard h2 {
+    font-size: 1.5rem;
+  }
+
+  .ctaCard p {
+    font-size: 1rem;
+  }
+
+  .ctaCard .button {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/* Mobile Landscape & Small Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .heroBanner {
+    padding: 4rem 1.5rem;
+  }
+
+  .heroBanner .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .heroAnimation {
+    order: -1;
+  }
+
+  .robotIcon {
+    font-size: 8rem;
+  }
+
+  .buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .button {
+    padding: 0.95rem 1.75rem;
+  }
+
+  .pathGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pathArrow {
+    transform: rotate(90deg);
+    margin: 0.5rem 0;
+  }
+
+  .learningPath {
+    padding: 4rem 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.25rem;
+  }
+
+  .ctaCard {
+    padding: 3rem 2rem;
+  }
+
+  .ctaCard h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Tablets & iPad (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .heroBanner .container {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 3rem;
+  }
+
+  .heroTitle {
+    font-size: 2.75rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.35rem;
+  }
+
+  .robotIcon {
+    font-size: 11rem;
+  }
+
+  .pathGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pathArrow {
+    display: none;
+  }
+
+  .ctaCard {
+    padding: 3.5rem 2.5rem;
+  }
+}
+
+/* Laptops & Small Desktops (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .heroBanner .container {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .heroTitle {
+    font-size: 3.25rem;
+  }
+
+  .robotIcon {
+    font-size: 13rem;
+  }
+
+  .pathGrid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+/* Legacy breakpoint for compatibility */
 @media (max-width: 996px) {
   .heroBanner .container {
     grid-template-columns: 1fr;

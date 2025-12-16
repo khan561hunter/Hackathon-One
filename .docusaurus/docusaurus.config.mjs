@@ -20,6 +20,9 @@ export default {
     "path": "i18n",
     "localeConfigs": {}
   },
+  "customFields": {
+    "backendUrl": "https://miraculous-dream-production-ae30.up.railway.app"
+  },
   "presets": [
     [
       "classic",
@@ -362,7 +365,6 @@ export default {
   "staticDirectories": [
     "static"
   ],
-  "customFields": {},
   "plugins": [],
   "themes": [],
   "scripts": [],

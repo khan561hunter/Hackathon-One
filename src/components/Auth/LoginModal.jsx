@@ -33,7 +33,7 @@ const GitHubIcon = () => (
   </svg>
 );
 
-export default function LoginModal({ onClose, onSwitchToSignup }) {
+export default function LoginModal({ onClose, onSwitchToSignup, contextMessage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -50,12 +50,23 @@ export default function LoginModal({ onClose, onSwitchToSignup }) {
         password,
       });
 
-      if (result.error) {
-        setError(result.error.message || "Login failed");
+      if (result?.error || result?.data?.error) {
+        setError(result?.error?.message || result?.data?.error?.message || "Login failed");
         setIsLoading(false);
       } else {
+        // Get intended route from localStorage
+        const intendedRoute = localStorage.getItem("auth_intended_route");
+
         onClose();
-        window.location.reload();
+
+        // Redirect to intended route or homepage
+        if (intendedRoute) {
+          localStorage.removeItem("auth_intended_route");
+          window.location.href = intendedRoute;
+        } else {
+          // Redirect to homepage to see personalized welcome
+          window.location.href = "/";
+        }
       }
     } catch (err) {
       setError("An unexpected error occurred");
@@ -85,7 +96,13 @@ export default function LoginModal({ onClose, onSwitchToSignup }) {
           &times;
         </button>
 
-        <h2 className={styles.modalTitle}>Sign In</h2>
+        <h2 className={styles.modalTitle}>Welcome Back</h2>
+
+        {contextMessage && (
+          <p className={styles.contextMessage}>
+            {contextMessage}
+          </p>
+        )}
 
         {error && <div className={styles.error}>{error}</div>}
 

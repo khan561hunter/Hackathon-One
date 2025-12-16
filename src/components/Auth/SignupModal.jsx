@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { signUp, signIn } from "../../lib/auth-client";
+import LevelSelectionModal from "./LevelSelectionModal";
 import styles from "./styles.module.css";
 
 // Simple icon components
@@ -33,8 +34,25 @@ const GitHubIcon = () => (
   </svg>
 );
 
-export default function SignupModal({ onClose, onSwitchToLogin }) {
-  const [name, setName] = useState("");
+const SIGNUP_FLOW_KEY = "signup_flow_active";
+
+export default function SignupModal({ onClose, onSwitchToLogin, contextMessage }) {
+  // Check if we're in the middle of signup flow (persisted across re-renders)
+  const [showLevelSelection, setShowLevelSelection] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(SIGNUP_FLOW_KEY) === "level_selection";
+    }
+    return false;
+  });
+
+  // Restore name from localStorage if in level selection mode
+  const [name, setName] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("signup_user_name") || "";
+    }
+    return "";
+  });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -58,12 +76,21 @@ export default function SignupModal({ onClose, onSwitchToLogin }) {
         name,
       });
 
-      if (result.error) {
-        setError(result.error.message || "Sign up failed");
+      // Check for errors in result
+      if (result?.error || result?.data?.error) {
+        setError(result?.error?.message || result?.data?.error?.message || "Sign up failed");
         setIsLoading(false);
       } else {
-        onClose();
-        window.location.reload();
+        // Show level selection modal instead of redirecting immediately
+        setIsLoading(false);
+
+        // Persist the signup flow state so it survives re-renders
+        if (typeof window !== "undefined") {
+          localStorage.setItem(SIGNUP_FLOW_KEY, "level_selection");
+          localStorage.setItem("signup_user_name", name);
+        }
+
+        setShowLevelSelection(true);
       }
     } catch (err) {
       setError("An unexpected error occurred");
@@ -86,14 +113,50 @@ export default function SignupModal({ onClose, onSwitchToLogin }) {
     }
   };
 
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>
-          &times;
-        </button>
+  const handleLevelSelectionComplete = () => {
+    // Clear the signup flow flag
+    if (typeof window !== "undefined") {
+      localStorage.removeItem(SIGNUP_FLOW_KEY);
+      localStorage.removeItem("signup_user_name");
+    }
 
-        <h2 className={styles.modalTitle}>Create Account</h2>
+    // After level selection, redirect to homepage
+    onClose();
+    window.location.href = "/";
+  };
+
+  // Show level selection content instead of signup form
+
+  return (
+    <div
+      key="signup-modal-container"
+      className={styles.modalOverlay}
+      onClick={showLevelSelection ? null : onClose}
+      style={showLevelSelection ? {
+        zIndex: 10000,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        backdropFilter: 'blur(4px)'
+      } : {}}
+    >
+      {showLevelSelection ? (
+        <LevelSelectionModal
+          key="level-selection"
+          onComplete={handleLevelSelectionComplete}
+          userName={name}
+        />
+      ) : (
+        <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+          <button className={styles.closeButton} onClick={onClose}>
+            &times;
+          </button>
+
+          <h2 className={styles.modalTitle}>Start Your Learning Journey</h2>
+
+        {contextMessage && (
+          <p className={styles.contextMessage}>
+            {contextMessage}
+          </p>
+        )}
 
         {error && <div className={styles.error}>{error}</div>}
 
@@ -163,6 +226,7 @@ export default function SignupModal({ onClose, onSwitchToLogin }) {
           </button>
         </p>
       </div>
+      )}
     </div>
   );
 }

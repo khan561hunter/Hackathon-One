@@ -11,6 +11,10 @@
           "mainDocId": "intro",
           "docs": [
             {
+              "id": "advanced-topics",
+              "path": "/docs/advanced-topics"
+            },
+            {
               "id": "capstone-vla-manipulation",
               "path": "/docs/capstone-vla-manipulation",
               "sidebar": "tutorialSidebar"

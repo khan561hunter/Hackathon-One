@@ -56,6 +56,11 @@ const sidebars = {
         'hardware-setup',
       ],
     },
+    {
+      type: 'doc',
+      id: 'advanced-topics',
+      label: 'Advanced Topics',
+    },
   ],
 };
 
