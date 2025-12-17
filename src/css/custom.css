@@ -331,9 +331,12 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 90;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   /* Main docs sidebar container - slides in from left */
@@ -342,34 +345,46 @@ a:hover {
     z-index: 100 !important;
     top: 0 !important;
     left: 0 !important;
+    bottom: 0 !important;
     height: 100vh !important;
     width: 85vw !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
+    margin: 0 !important;
+    padding: 0 !important;
     background: var(--ifm-background-color) !important;
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4) !important;
     transform: translateX(0) !important;
-    transition: transform 0.3s ease-in-out !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
   }
 
   /* When sidebar is hidden */
   .theme-doc-sidebar-container[aria-hidden="true"] {
     transform: translateX(-100%) !important;
+    visibility: hidden !important;
   }
 
   .theme-doc-sidebar-container[aria-hidden="true"]::before {
     display: none !important;
+    visibility: hidden !important;
   }
 
   /* Sidebar menu container */
   .theme-doc-sidebar-menu {
+    position: relative !important;
     padding: 1rem !important;
+    height: 100% !important;
     max-height: 100vh !important;
     overflow-y: auto !important;
+    overflow-x: hidden !important;
     background: var(--ifm-background-color) !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   /* Close button in sidebar */
-  button[class*="collapseSidebarButton"] {
+  button[class*="collapseSidebarButton"],
+  .theme-doc-sidebar-container button[class*="close"],
+  .theme-doc-sidebar-container button[aria-label*="Close"] {
     position: sticky !important;
     top: 0 !important;
     z-index: 101 !important;
@@ -377,32 +392,62 @@ a:hover {
     padding: 1rem !important;
     margin: -1rem -1rem 1rem -1rem !important;
     border-bottom: 1px solid var(--ifm-color-emphasis-200) !important;
+    width: calc(100% + 2rem) !important;
   }
 
-  /* Hamburger toggle button */
+  /* Hamburger toggle button - ensure it stays on top */
   button[class*="toggleButton"],
-  button.navbar__toggle {
+  button.navbar__toggle,
+  button[aria-label*="Toggle navigation bar"] {
     z-index: 102 !important;
+    position: relative !important;
   }
 
   /* Navbar sidebar (hamburger menu) - different from docs sidebar */
   .navbar-sidebar {
     z-index: 100 !important;
     position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
     width: 85vw !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
+    height: 100vh !important;
   }
 
   .navbar-sidebar__backdrop {
     z-index: 90 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
     background-color: rgba(0, 0, 0, 0.7) !important;
     backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
   }
 
   /* Prevent body scroll when sidebar is open */
   html[data-sidebar-open="true"],
   body[data-sidebar-open="true"] {
     overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Main wrapper should not interfere */
+  .main-wrapper {
+    position: relative !important;
+  }
+
+  /* Docs container should not create stacking context issues */
+  .docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module,
+  [class*="docMainContainer"] {
+    position: relative !important;
+    z-index: 1 !important;
   }
 }
 
