@@ -1,68 +1,6 @@
 import React from 'react';
 import styles from './HomepageFeatures.module.css';
-
-const FeatureList = [
-  {
-    title: 'ROS 2 Fundamentals',
-    icon: '🤖',
-    description: (
-      <>
-        Master the Robot Operating System 2, the backbone of modern robotics.
-        Learn nodes, topics, services, and more through hands-on tutorials.
-      </>
-    ),
-  },
-  {
-    title: 'Digital Twin Simulation',
-    icon: '🎮',
-    description: (
-      <>
-        Create and control virtual robots in Gazebo and Unity. Build realistic
-        simulations before deploying to physical hardware.
-      </>
-    ),
-  },
-  {
-    title: 'AI-Powered Perception',
-    icon: '👁️',
-    description: (
-      <>
-        Integrate NVIDIA Isaac Sim for advanced computer vision, navigation,
-        and AI-driven decision making in robotics.
-      </>
-    ),
-  },
-  {
-    title: 'Vision-Language-Action',
-    icon: '🗣️',
-    description: (
-      <>
-        Build robots that understand and act on natural language commands.
-        Bridge the gap between human communication and robot actions.
-      </>
-    ),
-  },
-  {
-    title: 'Reinforcement Learning',
-    icon: '🧠',
-    description: (
-      <>
-        Train intelligent locomotion policies using cutting-edge RL techniques.
-        Watch your robots learn to walk, run, and navigate autonomously.
-      </>
-    ),
-  },
-  {
-    title: 'Real-World Deployment',
-    icon: '🚀',
-    description: (
-      <>
-        Deploy AI models on NVIDIA Jetson for real robots. Complete capstone
-        project with voice-controlled object manipulation.
-      </>
-    ),
-  },
-];
+import { useTranslation } from '../hooks/useTranslation';
 
 function Feature({icon, title, description}) {
   return (
@@ -79,6 +17,41 @@ function Feature({icon, title, description}) {
 }
 
 export default function HomepageFeatures() {
+  const { t } = useTranslation();
+
+  const FeatureList = [
+    {
+      title: t('homepage.features.ros2Title'),
+      icon: '🤖',
+      description: t('homepage.features.ros2Desc'),
+    },
+    {
+      title: t('homepage.features.digitalTwinTitle'),
+      icon: '🎮',
+      description: t('homepage.features.digitalTwinDesc'),
+    },
+    {
+      title: t('homepage.features.aiPerceptionTitle'),
+      icon: '👁️',
+      description: t('homepage.features.aiPerceptionDesc'),
+    },
+    {
+      title: t('homepage.features.vlaTitle'),
+      icon: '🗣️',
+      description: t('homepage.features.vlaDesc'),
+    },
+    {
+      title: t('homepage.features.rlTitle'),
+      icon: '🧠',
+      description: t('homepage.features.rlDesc'),
+    },
+    {
+      title: t('homepage.features.hardwareTitle'),
+      icon: '🚀',
+      description: t('homepage.features.hardwareDesc'),
+    },
+  ];
+
   return (
     <section className={styles.features}>
       <div className="container">

@@ -5,33 +5,35 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import HomeWelcome from '@site/src/components/HomeWelcome';
+import { useTranslation } from '../hooks/useTranslation';
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const { t } = useTranslation();
+
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            {siteConfig.title}
+            {t('homepage.title')}
           </h1>
-          <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+          <p className={styles.heroSubtitle}>{t('homepage.tagline')}</p>
           <p className={styles.heroDescription}>
-            A comprehensive guide to building intelligent humanoid robots with
-            ROS 2, AI perception, and reinforcement learning
+            {t('homepage.description')}
           </p>
           <div className={styles.buttons}>
             <Link
               className={clsx('button button--primary button--lg', styles.button)}
               to="/docs/intro">
-              Start Learning
+              {t('homepage.startLearning')}
             </Link>
             <Link
               className={clsx('button button--secondary button--lg', styles.button)}
               to="/docs/ros2-intro">
-              ROS 2 Basics
+              {t('homepage.ros2Basics')}
             </Link>
           </div>
         </div>
@@ -45,10 +47,12 @@ function HomepageHeader() {
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
+  const { t } = useTranslation();
+
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Embodied Intelligence in the Real World - Learn Physical AI and Humanoid Robotics">
+      title={t('homepage.title')}
+      description={t('homepage.tagline')}>
       <HomepageHeader />
       <main>
         <div className="container">
@@ -57,30 +61,30 @@ export default function Home() {
         <HomepageFeatures />
         <section className={styles.learningPath}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Your Learning Journey</h2>
+            <h2 className={styles.sectionTitle}>{t('homepage.learningJourney')}</h2>
             <div className={styles.pathGrid}>
               <div className={styles.pathItem}>
                 <div className={styles.pathNumber}>1</div>
-                <h3>ROS 2 Basic Joint Control</h3>
-                <p>Understand fundamentals through simple joint manipulation</p>
+                <h3>{t('homepage.step1Title')}</h3>
+                <p>{t('homepage.step1Desc')}</p>
               </div>
               <div className={styles.pathArrow}>→</div>
               <div className={styles.pathItem}>
                 <div className={styles.pathNumber}>2</div>
-                <h3>Humanoid Navigation</h3>
-                <p>Simulate robot navigation with obstacle avoidance</p>
+                <h3>{t('homepage.step2Title')}</h3>
+                <p>{t('homepage.step2Desc')}</p>
               </div>
               <div className={styles.pathArrow}>→</div>
               <div className={styles.pathItem}>
                 <div className={styles.pathNumber}>3</div>
-                <h3>AI Brain Training</h3>
-                <p>Train locomotion policies using reinforcement learning</p>
+                <h3>{t('homepage.step3Title')}</h3>
+                <p>{t('homepage.step3Desc')}</p>
               </div>
               <div className={styles.pathArrow}>→</div>
               <div className={styles.pathItem}>
                 <div className={styles.pathNumber}>4</div>
-                <h3>Voice-Controlled Manipulation</h3>
-                <p>Capstone project integrating all concepts</p>
+                <h3>{t('homepage.step4Title')}</h3>
+                <p>{t('homepage.step4Desc')}</p>
               </div>
             </div>
           </div>
@@ -88,15 +92,12 @@ export default function Home() {
         <section className={styles.ctaSection}>
           <div className="container">
             <div className={styles.ctaCard}>
-              <h2>Ready to Build the Future?</h2>
-              <p>
-                Join thousands of developers learning to build intelligent robots
-                that interact with the physical world.
-              </p>
+              <h2>{t('homepage.ctaTitle')}</h2>
+              <p>{t('homepage.ctaDescription')}</p>
               <Link
                 className="button button--primary button--lg"
                 to="/docs/intro">
-                Get Started Now
+                {t('homepage.getStarted')}
               </Link>
             </div>
           </div>
