@@ -19,10 +19,22 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Internationalization (optional, can be configured later)
+  // Internationalization
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ur'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl',
+        htmlLang: 'ur-PK',
+      },
+    },
   },
 
   // Custom fields for chatbot backend URL
@@ -78,6 +90,10 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Book',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/your-github-username-or-org/physical-ai-humanoid-robotics-book',

@@ -1,0 +1,62 @@
+{
+  "version.label": {
+    "message": "اگلا",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.ROS 2 Fundamentals": {
+    "message": "ROS 2 بنیادی باتیں",
+    "description": "The label for category 'ROS 2 Fundamentals' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Digital Twin Simulation": {
+    "message": "ڈیجیٹل ٹوئن سمولیشن",
+    "description": "The label for category 'Digital Twin Simulation' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.AI-Robot Brain (NVIDIA Isaac)": {
+    "message": "AI-روبوٹ دماغ (NVIDIA Isaac)",
+    "description": "The label for category 'AI-Robot Brain (NVIDIA Isaac)' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Capstone Project": {
+    "message": "کیپسٹون پروجیکٹ",
+    "description": "The label for category 'Capstone Project' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Hardware Setup": {
+    "message": "ہارڈویئر سیٹ اپ",
+    "description": "The label for category 'Hardware Setup' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.doc.Introduction": {
+    "message": "تعارف",
+    "description": "The label for the doc item 'Introduction' in sidebar 'tutorialSidebar', linking to the doc intro"
+  },
+  "sidebar.tutorialSidebar.doc.Advanced Topics": {
+    "message": "جدید موضوعات",
+    "description": "The label for the doc item 'Advanced Topics' in sidebar 'tutorialSidebar', linking to the doc advanced-topics"
+  },
+  "sidebar.tutorialSidebar.doc.ROS 2 کی بنیادیں": {
+    "message": "ROS 2 کی بنیادیں",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc ros2-intro"
+  },
+  "sidebar.tutorialSidebar.doc.ROS 2 جوائنٹ کنٹرول": {
+    "message": "ROS 2 جوائنٹ کنٹرول",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc ros2-joint-control"
+  },
+  "sidebar.tutorialSidebar.doc.ڈیجیٹل ٹوئن سمیولیشن": {
+    "message": "ڈیجیٹل ٹوئن سمیولیشن",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc digital-twin-intro"
+  },
+  "sidebar.tutorialSidebar.doc.Humanoid Navigation": {
+    "message": "Humanoid Navigation",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc humanoid-navigation"
+  },
+  "sidebar.tutorialSidebar.doc.Isaac Locomotion Training": {
+    "message": "Isaac Locomotion Training",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc isaac-locomotion-training"
+  },
+  "sidebar.tutorialSidebar.doc.VLA Manipulation": {
+    "message": "VLA Manipulation",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc capstone-vla-manipulation"
+  },
+  "sidebar.tutorialSidebar.doc.ہارڈویئر سیٹ اپ": {
+    "message": "ہارڈویئر سیٹ اپ",
+    "description": "The label for the doc item in sidebar 'tutorialSidebar', linking to the doc hardware-setup"
+  }
+}

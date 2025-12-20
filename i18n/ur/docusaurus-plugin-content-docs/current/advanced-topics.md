@@ -1,0 +1,182 @@
+---
+id: advanced-topics
+title: فزیکل AI میں جدید موضوعات
+sidebar_label: جدید موضوعات
+sidebar_position: 10
+---
+
+# فزیکل AI میں جدید موضوعات
+
+Physical AI & Humanoid Robotics کتاب کے advanced section میں خوش آمدید۔ اس content تک رسائی کے لیے آپ کے ذاتی learning path اور progress کو track کرنے کے لیے authentication کی ضرورت ہے۔
+
+## Multi-Modal Sensor Fusion
+
+### Sensor Fusion کا تعارف
+
+Advanced robotics applications میں، متعدد sensors (camera، LiDAR، IMU، tactile sensors) سے data کو combine کرنا environment کی زیادہ مضبوط perception فراہم کرتا ہے۔
+
+**کلیدی تصورات:**
+- State estimation کے لیے Kalman Filtering
+- Localization کے لیے particle filters
+- Bayesian sensor fusion techniques
+
+### ROS 2 کے ساتھ Implementation
+
+```python
+import rclpy
+from sensor_msgs.msg import Image, LaserScan, Imu
+from geometry_msgs.msg import PoseStamped
+
+class SensorFusionNode:
+    def __init__(self):
+        self.camera_sub = self.create_subscription(
+            Image, '/camera/image', self.camera_callback, 10)
+        self.lidar_sub = self.create_subscription(
+            LaserScan, '/scan', self.lidar_callback, 10)
+        self.imu_sub = self.create_subscription(
+            Imu, '/imu', self.imu_callback, 10)
+
+        self.fused_pose_pub = self.create_publisher(
+            PoseStamped, '/fused_pose', 10)
+
+    def fuse_sensors(self):
+        # Sensor fusion logic here
+        pass
+```
+
+## Locomotion کے لیے Reinforcement Learning
+
+### Bipedal Walking کے لیے Deep Q-Networks (DQN)
+
+Humanoid robot کو چلنا سکھانے میں شامل ہے:
+
+1. **State Space**: Joint angles، velocities، torso orientation
+2. **Action Space**: Joint torques یا position commands
+3. **Reward Function**: Forward progress - energy consumption - falls
+
+### Isaac Sim کے ساتھ Training Pipeline
+
+```python
+from omni.isaac.gym.vec_env import VecEnvBase
+import torch
+import torch.nn as nn
+
+class HumanoidPolicy(nn.Module):
+    def __init__(self, state_dim, action_dim):
+        super().__init__()
+        self.network = nn.Sequential(
+            nn.Linear(state_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, action_dim)
+        )
+
+    def forward(self, state):
+        return self.network(state)
+
+# Training loop
+policy = HumanoidPolicy(state_dim=48, action_dim=12)
+optimizer = torch.optim.Adam(policy.parameters(), lr=3e-4)
+
+for episode in range(num_episodes):
+    state = env.reset()
+    done = False
+
+    while not done:
+        action = policy(state)
+        next_state, reward, done, info = env.step(action)
+        # Update policy
+        state = next_state
+```
+
+## Vision-Language-Action Models
+
+### Language کو Robot Control کے ساتھ Integrate کرنا
+
+جدید Physical AI systems قدرتی language instructions سمجھ سکتے ہیں اور انہیں robot actions میں translate کر سکتے ہیں۔
+
+**Architecture:**
+1. **Language Encoder**: Text commands process کریں (BERT، GPT)
+2. **Vision Encoder**: Camera images process کریں (ResNet، ViT)
+3. **Action Decoder**: Robot control commands generate کریں
+
+### مثال: Voice-Controlled Grasping
+
+```python
+from transformers import WhisperForConditionalGeneration, WhisperProcessor
+import torch
+
+# Voice to text
+processor = WhisperProcessor.from_pretrained("openai/whisper-small")
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
+
+def process_voice_command(audio):
+    inputs = processor(audio, return_tensors="pt")
+    predicted_ids = model.generate(inputs.input_features)
+    transcription = processor.batch_decode(predicted_ids)[0]
+
+    # Parse command
+    if "pick up" in transcription.lower():
+        object_name = extract_object(transcription)
+        return execute_grasp(object_name)
+    elif "move to" in transcription.lower():
+        location = extract_location(transcription)
+        return navigate_to(location)
+```
+
+## Real-Time Performance Optimization
+
+### Perception کے لیے CUDA Acceleration
+
+```python
+import cupy as cp
+import numpy as np
+
+def cuda_process_pointcloud(points):
+    # Move to GPU
+    gpu_points = cp.asarray(points)
+
+    # Parallel processing on GPU
+    filtered = cp.where(gpu_points[:, 2] > 0.1, gpu_points, 0)
+
+    # Return to CPU
+    return cp.asnumpy(filtered)
+```
+
+### Real-Time Constraints
+
+- **Sensor Processing**: < 10ms latency
+- **Planning**: Trajectory generation کے لیے < 100ms
+- **Control Loop**: مستحکم motion control کے لیے 1kHz
+
+## Safety اور Fail-Safe Mechanisms
+
+### Emergency Stop Systems
+
+```python
+class SafetyMonitor:
+    def __init__(self):
+        self.emergency_stop = False
+        self.collision_threshold = 0.2  # meters
+
+    def check_safety(self, sensor_data):
+        if sensor_data.min_distance < self.collision_threshold:
+            self.trigger_emergency_stop()
+
+    def trigger_emergency_stop(self):
+        self.emergency_stop = True
+        # Send zero velocity commands
+        self.publish_zero_velocity()
+```
+
+## اگلے قدم
+
+Advanced topics section تک پہنچنے پر مبارکباد! آپ کی progress save ہو گئی ہے۔ مزید تلاش کریں:
+
+- [Hardware Setup Guide](hardware-setup.md)
+- [Capstone Project: VLA Manipulation](capstone-vla-manipulation.md)
+
+---
+
+**آپ کی Progress**: اس page کی visit track کر لی گئی ہے۔ آپ کا learning journey جاری ہے!

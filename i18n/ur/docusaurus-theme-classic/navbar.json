@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "Physical AI & Humanoid Robotics",
+    "description": "The title in the navbar"
+  },
+  "item.label.Book": {
+    "message": "کتاب",
+    "description": "Navbar item with label Book"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "logo.alt": {
+    "message": "Physical AI Logo",
+    "description": "The alt text of navbar logo"
+  }
+}

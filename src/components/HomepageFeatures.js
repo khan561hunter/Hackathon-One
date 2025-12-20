@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './HomepageFeatures.module.css';
-import { useTranslation } from '../hooks/useTranslation';
+import Translate from '@docusaurus/Translate';
 
 function Feature({icon, title, description}) {
   return (
@@ -17,38 +17,36 @@ function Feature({icon, title, description}) {
 }
 
 export default function HomepageFeatures() {
-  const { t } = useTranslation();
-
   const FeatureList = [
     {
-      title: t('homepage.features.ros2Title'),
+      title: <Translate id="homepage.features.ros2Title">ROS 2 Fundamentals</Translate>,
       icon: '🤖',
-      description: t('homepage.features.ros2Desc'),
+      description: <Translate id="homepage.features.ros2Desc">Learn the basics of ROS 2, the Robot Operating System that powers modern robotics applications.</Translate>,
     },
     {
-      title: t('homepage.features.digitalTwinTitle'),
+      title: <Translate id="homepage.features.digitalTwinTitle">Digital Twin Simulation</Translate>,
       icon: '🎮',
-      description: t('homepage.features.digitalTwinDesc'),
+      description: <Translate id="homepage.features.digitalTwinDesc">Build and test your robots in realistic simulations before deploying to real hardware.</Translate>,
     },
     {
-      title: t('homepage.features.aiPerceptionTitle'),
+      title: <Translate id="homepage.features.aiPerceptionTitle">AI Perception</Translate>,
       icon: '👁️',
-      description: t('homepage.features.aiPerceptionDesc'),
+      description: <Translate id="homepage.features.aiPerceptionDesc">Implement computer vision and sensor fusion for robot perception and understanding.</Translate>,
     },
     {
-      title: t('homepage.features.vlaTitle'),
+      title: <Translate id="homepage.features.vlaTitle">Voice-Language-Action AI</Translate>,
       icon: '🗣️',
-      description: t('homepage.features.vlaDesc'),
+      description: <Translate id="homepage.features.vlaDesc">Build intelligent robots that understand natural language commands and execute them.</Translate>,
     },
     {
-      title: t('homepage.features.rlTitle'),
+      title: <Translate id="homepage.features.rlTitle">Reinforcement Learning</Translate>,
       icon: '🧠',
-      description: t('homepage.features.rlDesc'),
+      description: <Translate id="homepage.features.rlDesc">Train robot behaviors using RL in simulation with NVIDIA Isaac Gym.</Translate>,
     },
     {
-      title: t('homepage.features.hardwareTitle'),
+      title: <Translate id="homepage.features.hardwareTitle">Hardware Integration</Translate>,
       icon: '🚀',
-      description: t('homepage.features.hardwareDesc'),
+      description: <Translate id="homepage.features.hardwareDesc">Deploy your AI models to real humanoid robots and edge devices.</Translate>,
     },
   ];
 
